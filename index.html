@@ -185,6 +185,7 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100;
 .product-card { cursor:pointer; transition:transform 0.4s ease; }
 .product-card:hover { transform:translateY(-6px); }
 .product-img { aspect-ratio:4/5; overflow:hidden; background:var(--beige); position:relative; margin-bottom:24px; }
+.product-card:hover .product-photo-gallery .gallery-slides { /* handled by hover on card */ }
 .product-tag { position:absolute; top:16px; left:16px; background:var(--cream); color:var(--brown);
   font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; padding:5px 12px; z-index:2; }
 .product-category { font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
@@ -592,13 +593,23 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
       <!-- Clay Tray -->
       <div class="product-card reveal" onclick="navigate('detail','tray')">
         <div class="product-img">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 200 200" width="150" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="100" cy="120" rx="80" ry="20" fill="#A75B47" opacity="0.3"/>
-              <circle cx="100" cy="100" r="70" fill="#EBE5D5" stroke="#A75B47" stroke-width="2"/>
-              <circle cx="100" cy="100" r="65" fill="#F2EDE3" stroke="#A75B47" stroke-width="0.5" stroke-dasharray="4,4"/>
-              <path d="M100,100 Q100,68 120,72 Q140,76 138,96 Q136,116 114,118 Q92,120 88,100 Q84,80 100,75 Q116,70 120,84 Q124,98 114,106 Q104,114 94,106 Q84,98 90,90" fill="none" stroke="#3B281B" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
+          <div class="product-photo-gallery" id="tray-gallery-home">
+            <div class="gallery-slides" id="tray-home-slides">
+              <div class="gallery-slide"><img src="images/clay0.jpg" alt="Clay Tray 1"></div>
+              <div class="gallery-slide"><img src="images/clay1.jpg" alt="Clay Tray 2"></div>
+              <div class="gallery-slide"><img src="images/clay2.jpg" alt="Clay Tray 3"></div>
+              <div class="gallery-slide"><img src="images/clay3.jpg" alt="Clay Tray 4"></div>
+              <div class="gallery-slide"><img src="images/clay4.jpg" alt="Clay Tray 5"></div>
+            </div>
+            <button class="gallery-nav prev" onclick="event.stopPropagation();slideGallery('tray-home',-1)">‹</button>
+            <button class="gallery-nav next" onclick="event.stopPropagation();slideGallery('tray-home',1)">›</button>
+            <div class="gallery-dots" id="tray-home-dots">
+              <button class="gallery-dot active" onclick="event.stopPropagation();goToSlide('tray-home',0)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('tray-home',1)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('tray-home',2)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('tray-home',3)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('tray-home',4)"></button>
+            </div>
           </div>
           <span class="product-tag">1 pcs only</span>
         </div>
@@ -801,13 +812,23 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
       </div>
       <div class="product-card" data-cat="decor" onclick="navigate('detail','tray')">
         <div class="product-img">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 200 200" width="130" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="100" cy="120" rx="80" ry="20" fill="#A75B47" opacity="0.3"/>
-              <circle cx="100" cy="100" r="70" fill="#EBE5D5" stroke="#A75B47" stroke-width="2"/>
-              <circle cx="100" cy="100" r="65" fill="#F2EDE3" stroke="#A75B47" stroke-width="0.5" stroke-dasharray="4,4"/>
-              <path d="M100,100 Q100,68 120,72 Q140,76 138,96 Q136,116 114,118 Q92,120 88,100 Q84,80 100,75 Q116,70 120,84 Q124,98 114,106 Q104,114 94,106 Q84,98 90,90" fill="none" stroke="#3B281B" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
+          <div class="product-photo-gallery" id="tray-gallery-shop">
+            <div class="gallery-slides" id="tray-shop-slides">
+              <div class="gallery-slide"><img src="images/clay0.jpg" alt="Clay Tray 1"></div>
+              <div class="gallery-slide"><img src="images/clay1.jpg" alt="Clay Tray 2"></div>
+              <div class="gallery-slide"><img src="images/clay2.jpg" alt="Clay Tray 3"></div>
+              <div class="gallery-slide"><img src="images/clay3.jpg" alt="Clay Tray 4"></div>
+              <div class="gallery-slide"><img src="images/clay4.jpg" alt="Clay Tray 5"></div>
+            </div>
+            <button class="gallery-nav prev" onclick="event.stopPropagation();slideGallery('tray-shop',-1)">‹</button>
+            <button class="gallery-nav next" onclick="event.stopPropagation();slideGallery('tray-shop',1)">›</button>
+            <div class="gallery-dots" id="tray-shop-dots">
+              <button class="gallery-dot active" onclick="event.stopPropagation();goToSlide('tray-shop',0)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('tray-shop',1)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('tray-shop',2)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('tray-shop',3)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('tray-shop',4)"></button>
+            </div>
           </div>
           <span class="product-tag">1 pcs only</span>
         </div>
@@ -997,6 +1018,8 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
 
 <script>
 const CHARM_IMGS = ['images/charm0.jpg','images/charm1.jpg','images/charm2.jpg','images/charm3.jpg'];
+const TRAY_IMGS = ['images/clay0.jpg','images/clay1.jpg','images/clay2.jpg','images/clay3.jpg','images/clay4.jpg'];
+const EARPHONES_IMGS = ['images/wrapped1.jpg','images/wrapped2.jpg','images/wrapped3.jpg','images/wrapped4.jpg','images/wrapped5.jpg','images/wrapped6.jpg'];
 
 const products = {
   earphones: {
@@ -1042,7 +1065,8 @@ Strung by hand on natural cord, each charm is assembled one by one, stone by sto
 Hang it by your window. Let it catch the afternoon light. Let it remind you of something you can't quite name — but know is yours.`,
     features:['Made with natural fluorite stones and beads','Each piece is unique — no two are identical','Customizable: choose your color palette & vibe','Made by order · Production time: 3 working days','Ships anywhere in Indonesia','Handmade in Bandung'],
     customOptions:['Earthy Tones','Muted Greens','Soft Purple','Ocean Vibes','Warm Neutrals','Custom Vibe'],
-    svgType:'charm'
+    svgType:'charm',
+    imgs: CHARM_IMGS
   },
   tray: {
     id:'tray', name:'Clay Tray', subtitle:'Handmade Clay · Minimal Design',
@@ -1055,7 +1079,8 @@ Shaped by hand from soft clay, then pressed with a clean spiral design that draw
 Place it on your bedside table for your rings. Set a tiny candle in it. Or simply let it sit on your desk and remind you that something made slowly, with care, is always worth having.`,
     features:['Handmade from natural clay','Minimal spiral design — clean and aesthetic','Suitable for jewelry, small candles, or decor','Ready stock — only 1 piece available','Simple, clean, and unique','Handmade in Bandung'],
     customOptions:null,
-    svgType:'tray'
+    svgType:'tray',
+    imgs: TRAY_IMGS
   }
 };
 
@@ -1086,34 +1111,23 @@ function renderDetail(id) {
   const p = products[id];
   if (!p) return;
 
-  const imgs = p.svgType === 'charm' ? CHARM_IMGS : null;
+  // Always use p.imgs — every product now has an imgs array
+  const imgs = p.imgs;
 
-  let galleryHtml;
-  if (imgs) {
-    galleryHtml = `
-      <div class="detail-photo-gallery">
-        <div class="detail-gallery-slides" id="detail-slides">
-          ${imgs.map((src,i) => `<div class="detail-gallery-slide"><img src="${src}" alt="${p.name} ${i+1}" loading="${i===0?'eager':'lazy'}"></div>`).join('')}
-        </div>
-        <button class="detail-gallery-nav prev" onclick="slideDetailGallery(-1)">‹</button>
-        <button class="detail-gallery-nav next" onclick="slideDetailGallery(1)">›</button>
-        <div class="detail-gallery-dots" id="detail-dots">
-          ${imgs.map((_,i) => `<button class="detail-gallery-dot${i===0?' active':''}" onclick="goToDetailSlide(${i})"></button>`).join('')}
-        </div>
+  const galleryHtml = `
+    <div class="detail-photo-gallery">
+      <div class="detail-gallery-slides" id="detail-slides">
+        ${imgs.map((src,i) => `<div class="detail-gallery-slide"><img src="${src}" alt="${p.name} ${i+1}" loading="${i===0?'eager':'lazy'}"></div>`).join('')}
       </div>
-      <div class="detail-thumb-strip">
-        ${imgs.map((src,i) => `<div class="detail-thumb${i===0?' active':''}" onclick="goToDetailSlide(${i})"><img src="${src}" alt="${p.name} ${i+1}"></div>`).join('')}
-      </div>`;
-  } else {
-    galleryHtml = `<div style="flex:1;display:flex;align-items:center;justify-content:center;padding:60px;">
-      <svg viewBox="0 0 220 220" width="200" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="110" cy="130" rx="90" ry="22" fill="#A75B47" opacity="0.25"/>
-        <circle cx="110" cy="108" r="80" fill="#EBE5D5" stroke="#A75B47" stroke-width="2"/>
-        <circle cx="110" cy="108" r="74" fill="#F2EDE3" stroke="#A75B47" stroke-width="0.5" stroke-dasharray="4,4"/>
-        <path d="M110,108 Q110,72 132,76 Q154,80 152,102 Q150,124 126,126 Q102,128 98,108 Q94,88 110,83 Q126,78 130,92 Q134,106 124,115 Q114,124 104,115 Q94,106 100,97" fill="none" stroke="#3B281B" stroke-width="3" stroke-linecap="round"/>
-      </svg>
+      <button class="detail-gallery-nav prev" onclick="slideDetailGallery(-1)">‹</button>
+      <button class="detail-gallery-nav next" onclick="slideDetailGallery(1)">›</button>
+      <div class="detail-gallery-dots" id="detail-dots">
+        ${imgs.map((_,i) => `<button class="detail-gallery-dot${i===0?' active':''}" onclick="goToDetailSlide(${i})"></button>`).join('')}
+      </div>
+    </div>
+    <div class="detail-thumb-strip">
+      ${imgs.map((src,i) => `<div class="detail-thumb${i===0?' active':''}" onclick="goToDetailSlide(${i})"><img src="${src}" alt="${p.name} ${i+1}"></div>`).join('')}
     </div>`;
-  }
 
   const featuresHtml = p.features.map(f => `<div class="feature-item"><span class="feature-icon">◇</span><span>${f}</span></div>`).join('');
   const customHtml = p.customOptions ? `<div class="custom-section"><p class="custom-title">Customize Your Vibe</p><p style="font-size:0.78rem;color:var(--text-soft);font-weight:300;">Choose a color palette direction:</p><div class="custom-options">${p.customOptions.map(o=>`<button class="custom-opt" onclick="selectOpt(this)">${o}</button>`).join('')}</div></div>` : '';
@@ -1211,10 +1225,9 @@ function updateCartUI() {
   document.getElementById('cartTotal').textContent='Rp '+cart.reduce((s,i)=>s+i.price*i.qty,0).toLocaleString('id-ID');
   itemsEl.innerHTML=cart.map(item=>`
     <div class="cart-item">
-      <div class="cart-item-img">${item.svgType==='charm'
-        ?`<img src="${CHARM_IMGS[0]}" style="width:100%;height:100%;object-fit:cover;">`
-        :`<svg viewBox="0 0 80 80" width="50" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="32" fill="#EBE5D5" stroke="#A75B47" stroke-width="1.5"/><path d="M40,40 Q40,26 50,28 Q60,30 59,38 Q58,47 49,48 Q40,49 38,40 Q36,31 42,29 Q48,27 50,33 Q52,39 47,43 Q42,47 37,43 Q32,39 35,35" fill="none" stroke="#3B281B" stroke-width="2" stroke-linecap="round"/></svg>`
-      }</div>
+      <div class="cart-item-img">
+        <img src="${item.imgs[0]}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;">
+      </div>
       <div class="cart-item-info">
         <p class="cart-item-name">${item.name}</p>
         <p class="cart-item-detail">${item.subtitle} · Qty: ${item.qty}</p>
