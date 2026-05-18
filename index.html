@@ -982,8 +982,9 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
       <div class="form-group"><label class="form-label">Product</label>
         <select class="form-select">
           <option value="">Select a product</option>
-          <option value="charm">Hanging Charm – Rp 25.000</option>
+          <option value="charm">Hanging Charm – Rp 105.000</option>
           <option value="tray">Clay Tray – Rp 25.000</option>
+          <option value="wrapped">Wrapped Earphones – Rp 135.000</option>
           <option value="custom">Custom Request</option>
         </select>
       </div>
@@ -1264,14 +1265,14 @@ function submitOrder() {
   }
 
   const msg = 
-`Halo Winxloop! Saya mau order 🌿
+`Hi, Winxloop!
 
-*Nama:* ${name}
-*Kontak:* ${contact}
-*Produk:* ${product}
-*Vibe/Warna:* ${vibe || '-'}
-*Alamat:* ${address || '-'}
-*Catatan:* ${notes || '-'}`;
+*Name:* ${name}
+*Contact:* ${contact}
+*Products:* ${product}
+*Vibe:* ${vibe || '-'}
+*Address:* ${address || '-'}
+*Notes:* ${notes || '-'}`;
 
   const waNumber = '6285179753768'; // ← GANTI dengan nomor WA seller (format: 62xxx)
   const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
