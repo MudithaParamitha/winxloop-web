@@ -976,7 +976,7 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
       <h2 class="contact-form-title">Place your<br>order.</h2>
       <p class="contact-form-sub">Fill this out and we'll respond via DM or WhatsApp within 24 hours. Production time: 3 - 10 working days after confirmation.</p>
       <div class="form-row">
-        <div class="form-group"><label class="form-label">Your Name</label><input class="form-input" type="text" placeholder="e.g. Adinda"></div>
+        <div class="form-group"><label class="form-label">Your Name</label><input class="form-input" type="text" placeholder="e.g. Mvdi"></div>
         <div class="form-group"><label class="form-label">Instagram / WhatsApp</label><input class="form-input" type="text" placeholder="@yourusername or 08xx"></div>
       </div>
       <div class="form-group"><label class="form-label">Product</label>
@@ -1250,7 +1250,33 @@ function filterProducts(btn,cat) {
     card.style.display=(cat==='all'||card.dataset.cat===cat)?'':'none';
   });
 }
-function submitOrder() { showToast("Order sent! We'll DM you within 24 hours ✦"); }
+function submitOrder() {
+  const name = document.querySelector('.contact-right .form-input[placeholder="e.g. Mvdi"]').value.trim();
+  const contact = document.querySelector('.contact-right .form-input[placeholder="@yourusername or 08xx"]').value.trim();
+  const product = document.querySelector('.contact-right .form-select').value;
+  const vibe = document.querySelector('.contact-right .form-input[placeholder*="earthy tones"]').value.trim();
+  const address = document.querySelector('.contact-right .form-textarea').value.trim();
+  const notes = document.querySelectorAll('.contact-right .form-textarea')[1]?.value.trim();
+
+  if (!name || !contact || !product) {
+    showToast('Please fill in name, contact & product ✦');
+    return;
+  }
+
+  const msg = 
+`Halo Winxloop! Saya mau order 🌿
+
+*Nama:* ${name}
+*Kontak:* ${contact}
+*Produk:* ${product}
+*Vibe/Warna:* ${vibe || '-'}
+*Alamat:* ${address || '-'}
+*Catatan:* ${notes || '-'}`;
+
+  const waNumber = '6281234567890'; // ← GANTI dengan nomor WA seller (format: 62xxx)
+  const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
 function initReveal() {
   setTimeout(()=>{
     const obs=new IntersectionObserver(entries=>{
