@@ -91,17 +91,13 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100;
   color:var(--muted-green); margin-bottom:14px; display:block; }
 .divider { width:40px; height:1px; background:var(--sand); margin:20px 0; }
 
-/* ══════════════════════════
-   HERO — fixed full bleed
-══════════════════════════ */
+/* HERO */
 #home-hero {
   height: 100vh;
   display: grid;
   grid-template-columns: 52% 48%;
   overflow: hidden;
 }
-
-/* LEFT text panel */
 .hero-left {
   display: flex;
   flex-direction: column;
@@ -123,12 +119,9 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100;
   font-size:0.65rem; letter-spacing:0.22em; color:var(--text-muted); text-transform:uppercase;
   display:flex; align-items:center; gap:12px; }
 .hero-meta::before { content:''; display:inline-block; width:20px; height:1px; background:var(--text-muted); }
-
-/* RIGHT full bleed photo */
 .hero-right {
   position: relative;
   overflow: hidden;
-  /* NO background color — foto yang mengisi */
 }
 .hero-right img.hero-photo {
   position: absolute;
@@ -141,7 +134,6 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100;
   transition: transform 8s ease;
 }
 .hero-right:hover img.hero-photo { transform: scale(1.04); }
-/* gradient kiri untuk blend ke panel teks */
 .hero-right::before {
   content: '';
   position: absolute;
@@ -185,7 +177,6 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100;
 .product-card { cursor:pointer; transition:transform 0.4s ease; }
 .product-card:hover { transform:translateY(-6px); }
 .product-img { aspect-ratio:4/5; overflow:hidden; background:var(--beige); position:relative; margin-bottom:24px; }
-.product-card:hover .product-photo-gallery .gallery-slides { /* handled by hover on card */ }
 .product-tag { position:absolute; top:16px; left:16px; background:var(--cream); color:var(--brown);
   font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; padding:5px 12px; z-index:2; }
 .product-category { font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
@@ -199,14 +190,7 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100;
   font-size:1rem; color:var(--text-soft); transition:all 0.3s; }
 .product-quick-btn:hover { background:var(--brown-dark); color:white; border-color:var(--brown-dark); }
 
-/* SVG placeholder product (for tray without photo) */
-.product-img-placeholder {
-  width:100%; height:100%;
-  display:flex; align-items:center; justify-content:center;
-  background:var(--beige);
-}
-
-/* PHOTO GALLERY (product cards) */
+/* PHOTO GALLERY */
 .product-photo-gallery { width:100%; height:100%; position:relative; overflow:hidden; background:var(--beige); }
 .gallery-slides { display:flex; width:100%; height:100%; transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
 .gallery-slide { flex:0 0 100%; height:100%; overflow:hidden; }
@@ -434,13 +418,10 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
   nav { padding:16px 24px; }
   .nav-links { display:none; }
   .hamburger { display:flex; }
-
-  /* Hero mobile: stack vertically */
   #home-hero { grid-template-columns:1fr; height:auto; }
   .hero-left { padding:110px 28px 60px; min-height:60vh; }
   .hero-meta { left:28px; }
   .hero-right { height:55vw; min-height:260px; }
-
   #home-featured,#home-philosophy { padding:80px 24px; }
   #home-story { grid-template-columns:1fr; padding:80px 24px; }
   .story-visual { height:320px; }
@@ -558,7 +539,7 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
       <!-- Charm -->
       <div class="product-card reveal" onclick="navigate('detail','charm')">
         <div class="product-img">
-          <div class="product-photo-gallery" id="charm-gallery-home">
+          <div class="product-photo-gallery">
             <div class="gallery-slides" id="charm-home-slides">
               <div class="gallery-slide"><img src="images/charm0.jpg" alt="Hanging Charm 1"></div>
               <div class="gallery-slide"><img src="images/charm1.jpg" alt="Hanging Charm 2"></div>
@@ -593,7 +574,7 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
       <!-- Clay Tray -->
       <div class="product-card reveal" onclick="navigate('detail','tray')">
         <div class="product-img">
-          <div class="product-photo-gallery" id="tray-gallery-home">
+          <div class="product-photo-gallery">
             <div class="gallery-slides" id="tray-home-slides">
               <div class="gallery-slide"><img src="images/clay0.jpg" alt="Clay Tray 1"></div>
               <div class="gallery-slide"><img src="images/clay1.jpg" alt="Clay Tray 2"></div>
@@ -627,11 +608,10 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
         </div>
       </div>
 
-
       <!-- Earphones -->
       <div class="product-card reveal" onclick="navigate('detail','earphones')">
         <div class="product-img">
-          <div class="product-photo-gallery" id="earphones-gallery-home">
+          <div class="product-photo-gallery">
             <div class="gallery-slides" id="earphones-home-slides">
               <div class="gallery-slide"><img src="images/wrapped1.jpg" alt="Wrapped Earphones 1"></div>
               <div class="gallery-slide"><img src="images/wrapped2.jpg" alt="Wrapped Earphones 2"></div>
@@ -667,26 +647,25 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
         </div>
       </div>
 
-      <!-- Soda Can Tab Man -->
-      <div class="product-card reveal" onclick="navigate('detail','soda can tab man')">
+      <!-- Soda Can Tab Man — FIXED: navigate('detail','can') & addToCart('can') -->
+      <div class="product-card reveal" onclick="navigate('detail','can')">
         <div class="product-img">
-          <div class="product-photo-gallery" id="soda can tab man-gallery-home">
-            <div class="gallery-slides" id="soda can tab man-home-slides">
+          <div class="product-photo-gallery">
+            <div class="gallery-slides" id="can-home-slides">
               <div class="gallery-slide"><img src="images/can1.jpg" alt="Soda Can Tab Man 1"></div>
               <div class="gallery-slide"><img src="images/can2.jpg" alt="Soda Can Tab Man 2"></div>
               <div class="gallery-slide"><img src="images/can3.jpg" alt="Soda Can Tab Man 3"></div>
               <div class="gallery-slide"><img src="images/can4.jpg" alt="Soda Can Tab Man 4"></div>
               <div class="gallery-slide"><img src="images/can5.jpg" alt="Soda Can Tab Man 5"></div>
             </div>
-            <button class="gallery-nav prev" onclick="event.stopPropagation();slideGallery('soda can tab man-home',-1)">‹</button>
-            <button class="gallery-nav next" onclick="event.stopPropagation();slideGallery('soda can tab man-home',1)">›</button>
-            <div class="gallery-dots" id="soda can tab man-home-dots">
-              <button class="gallery-dot active" onclick="event.stopPropagation();goToSlide('soda can tab man-home',0)"></button>
-              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('soda can tab man-home',1)"></button>
-              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('soda can tab man-home',2)"></button>
-              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('soda can tab man-home',3)"></button>
-              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('soda can tab man-home',4)"></button>
-              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('soda can tab man-home',5)"></button>
+            <button class="gallery-nav prev" onclick="event.stopPropagation();slideGallery('can-home',-1)">‹</button>
+            <button class="gallery-nav next" onclick="event.stopPropagation();slideGallery('can-home',1)">›</button>
+            <div class="gallery-dots" id="can-home-dots">
+              <button class="gallery-dot active" onclick="event.stopPropagation();goToSlide('can-home',0)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('can-home',1)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('can-home',2)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('can-home',3)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('can-home',4)"></button>
             </div>
           </div>
           <span class="product-tag">Pre-Order · 6–10 Days</span>
@@ -700,7 +679,7 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
               <div class="product-price">Rp 25.000</div>
               <div class="product-price-note">Pre order · Custom</div>
             </div>
-            <button class="product-quick-btn" onclick="event.stopPropagation();addToCart('soda can tab man-home')">+</button>
+            <button class="product-quick-btn" onclick="event.stopPropagation();addToCart('can')">+</button>
           </div>
         </div>
       </div>
@@ -815,9 +794,11 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
       <button class="filter-btn" onclick="filterProducts(this,'accessory')">Accessories</button>
     </div>
     <div class="products-grid">
+
+      <!-- Charm shop -->
       <div class="product-card" data-cat="hanging" onclick="navigate('detail','charm')">
         <div class="product-img">
-          <div class="product-photo-gallery" id="charm-gallery-shop">
+          <div class="product-photo-gallery">
             <div class="gallery-slides" id="charm-shop-slides">
               <div class="gallery-slide"><img src="images/charm0.jpg" alt="Hanging Charm 1"></div>
               <div class="gallery-slide"><img src="images/charm1.jpg" alt="Hanging Charm 2"></div>
@@ -848,9 +829,11 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
           </div>
         </div>
       </div>
+
+      <!-- Tray shop -->
       <div class="product-card" data-cat="decor" onclick="navigate('detail','tray')">
         <div class="product-img">
-          <div class="product-photo-gallery" id="tray-gallery-shop">
+          <div class="product-photo-gallery">
             <div class="gallery-slides" id="tray-shop-slides">
               <div class="gallery-slide"><img src="images/clay0.jpg" alt="Clay Tray 1"></div>
               <div class="gallery-slide"><img src="images/clay1.jpg" alt="Clay Tray 2"></div>
@@ -887,7 +870,7 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
       <!-- Earphones shop -->
       <div class="product-card" data-cat="accessory" onclick="navigate('detail','earphones')">
         <div class="product-img">
-          <div class="product-photo-gallery" id="earphones-gallery-shop">
+          <div class="product-photo-gallery">
             <div class="gallery-slides" id="earphones-shop-slides">
               <div class="gallery-slide"><img src="images/wrapped1.jpg" alt="Wrapped Earphones 1"></div>
               <div class="gallery-slide"><img src="images/wrapped2.jpg" alt="Wrapped Earphones 2"></div>
@@ -923,26 +906,25 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
         </div>
       </div>
 
-      <!-- Soda Can Tab Man -->
-      <div class="product-card" data-cat="accessory" onclick="navigate('detail','soda can tab man')">
+      <!-- Soda Can Tab Man shop — FIXED: navigate('detail','can') & addToCart('can') -->
+      <div class="product-card" data-cat="accessory" onclick="navigate('detail','can')">
         <div class="product-img">
-          <div class="product-photo-gallery" id="soda can tab man-gallery-shop">
-            <div class="gallery-slides" id="soda can tab man-shop-slides">
+          <div class="product-photo-gallery">
+            <div class="gallery-slides" id="can-shop-slides">
               <div class="gallery-slide"><img src="images/can1.jpg" alt="Soda Can Tab Man 1"></div>
               <div class="gallery-slide"><img src="images/can2.jpg" alt="Soda Can Tab Man 2"></div>
               <div class="gallery-slide"><img src="images/can3.jpg" alt="Soda Can Tab Man 3"></div>
               <div class="gallery-slide"><img src="images/can4.jpg" alt="Soda Can Tab Man 4"></div>
               <div class="gallery-slide"><img src="images/can5.jpg" alt="Soda Can Tab Man 5"></div>
             </div>
-            <button class="gallery-nav prev" onclick="event.stopPropagation();slideGallery('soda can tab man-shop',-1)">‹</button>
-            <button class="gallery-nav next" onclick="event.stopPropagation();slideGallery('soda can tab man-shop',1)">›</button>
-            <div class="gallery-dots" id="soda can tab man-shop-dots">
-              <button class="gallery-dot active" onclick="event.stopPropagation();goToSlide('soda can tab man-shop',0)"></button>
-              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('soda can tab man-shop',1)"></button>
-              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('soda can tab man-shop',2)"></button>
-              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('soda can tab man-shop',3)"></button>
-              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('soda can tab man-shop',4)"></button>
-              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('soda can tab man-shop',5)"></button>
+            <button class="gallery-nav prev" onclick="event.stopPropagation();slideGallery('can-shop',-1)">‹</button>
+            <button class="gallery-nav next" onclick="event.stopPropagation();slideGallery('can-shop',1)">›</button>
+            <div class="gallery-dots" id="can-shop-dots">
+              <button class="gallery-dot active" onclick="event.stopPropagation();goToSlide('can-shop',0)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('can-shop',1)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('can-shop',2)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('can-shop',3)"></button>
+              <button class="gallery-dot" onclick="event.stopPropagation();goToSlide('can-shop',4)"></button>
             </div>
           </div>
           <span class="product-tag">Pre-Order · 6–10 Days</span>
@@ -956,7 +938,7 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
               <div class="product-price">Rp 25.000</div>
               <div class="product-price-note">Pre order · Custom</div>
             </div>
-            <button class="product-quick-btn" onclick="event.stopPropagation();addToCart('earphones')">+</button>
+            <button class="product-quick-btn" onclick="event.stopPropagation();addToCart('can')">+</button>
           </div>
         </div>
       </div>
@@ -1052,22 +1034,22 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
       <h2 class="contact-form-title">Place your<br>order.</h2>
       <p class="contact-form-sub">Fill this out and we'll respond via DM or WhatsApp within 24 hours. Production time: 3 - 10 working days after confirmation.</p>
       <div class="form-row">
-        <div class="form-group"><label class="form-label">Your Name</label><input class="form-input" type="text" placeholder="e.g. Mvdi"></div>
-        <div class="form-group"><label class="form-label">Instagram / WhatsApp</label><input class="form-input" type="text" placeholder="@yourusername or 08xx"></div>
+        <div class="form-group"><label class="form-label">Your Name</label><input class="form-input" id="inp-name" type="text" placeholder="e.g. Mvdi"></div>
+        <div class="form-group"><label class="form-label">Instagram / WhatsApp</label><input class="form-input" id="inp-contact" type="text" placeholder="@yourusername or 08xx"></div>
       </div>
       <div class="form-group"><label class="form-label">Product</label>
-        <select class="form-select">
+        <select class="form-select" id="inp-product">
           <option value="">Select a product</option>
-          <option value="charm">Hanging Charm – Rp 105.000</option>
-          <option value="tray">Clay Tray – Rp 25.000</option>
-          <option value="wrapped">Wrapped Earphones – Rp 135.000</option>
-          <option value="wrapped">Soda Can Tab Man Keychain – Rp 25.000</option>
-          <option value="custom">Custom Request</option>
+          <option value="Hanging Charm – Rp 105.000">Hanging Charm – Rp 105.000</option>
+          <option value="Clay Tray – Rp 25.000">Clay Tray – Rp 25.000</option>
+          <option value="Wrapped Earphones – Rp 135.000">Wrapped Earphones – Rp 135.000</option>
+          <option value="Soda Can Tab Man Keychain – Rp 25.000">Soda Can Tab Man Keychain – Rp 25.000</option>
+          <option value="Custom Request">Custom Request</option>
         </select>
       </div>
-      <div class="form-group"><label class="form-label">Your Vibe / Color Preference</label><input class="form-input" type="text" placeholder="e.g. earthy tones, muted green, soft purple…"></div>
-      <div class="form-group"><label class="form-label">Shipping Address</label><textarea class="form-textarea" placeholder="Your full address for shipping across Indonesia…"></textarea></div>
-      <div class="form-group"><label class="form-label">Additional Notes</label><textarea class="form-textarea" placeholder="Gift message, special requests…" style="height:80px;"></textarea></div>
+      <div class="form-group"><label class="form-label">Your Vibe / Color Preference</label><input class="form-input" id="inp-vibe" type="text" placeholder="e.g. earthy tones, muted green, soft purple…"></div>
+      <div class="form-group"><label class="form-label">Shipping Address</label><textarea class="form-textarea" id="inp-address" placeholder="Your full address for shipping across Indonesia…"></textarea></div>
+      <div class="form-group"><label class="form-label">Additional Notes</label><textarea class="form-textarea" id="inp-notes" placeholder="Gift message, special requests…" style="height:80px;"></textarea></div>
       <button class="btn-primary" style="width:100%;margin-top:10px;" onclick="submitOrder()"><span>Send Order Request</span></button>
       <p style="font-size:0.7rem;color:var(--text-muted);margin-top:16px;line-height:1.7;">We'll confirm via WhatsApp within 24 hours. Payment via transfer after confirmation. Shipping via JNE.</p>
     </div>
@@ -1095,12 +1077,57 @@ footer { background:var(--charcoal); color:var(--stone); padding:80px 64px 40px;
 </div>
 
 <script>
-const CHARM_IMGS = ['images/charm0.jpg','images/charm1.jpg','images/charm2.jpg','images/charm3.jpg'];
-const TRAY_IMGS = ['images/clay0.jpg','images/clay1.jpg','images/clay2.jpg','images/clay3.jpg','images/clay4.jpg'];
-const EARPHONES_IMGS = ['images/wrapped1.jpg','images/wrapped2.jpg','images/wrapped3.jpg','images/wrapped4.jpg','images/wrapped5.jpg','images/wrapped6.jpg'];
-const CAN_IMGS = ['images/can1.jpg','images/can2.jpg','images/can3.jpg','images/can4.jpg','images/can5.jpg'];
-
 const products = {
+  charm: {
+    id: 'charm',
+    name: 'Hanging Charm',
+    subtitle: 'Fluorite · Beads · Shell · Wood',
+    category: 'Handmade Hanging Decoration',
+    price: 105000,
+    priceLabel: 'Rp 105.000',
+    promo: 'Limited',
+    stock: 'Made by order · Production: 3 days',
+    imgs: ['images/charm0.jpg','images/charm1.jpg','images/charm2.jpg','images/charm3.jpg'],
+    desc: `There's something quiet about the way light moves through fluorite. Each stone catches it differently — no two ever the same. That's the heart of the Winxloop Hanging Charm.
+
+Strung by hand on natural cord, each charm is assembled one by one, stone by stone. The composition is guided by the colors and mood you choose — earthy and warm, soft and dreamy, or bold and grounding. We'll tune it to you.
+
+Hang it by your window. Let it catch the afternoon light. Let it remind you of something you can't quite name — but know is yours.`,
+    features: [
+      'Made with natural fluorite stones and beads',
+      'Each piece is unique — no two are identical',
+      'Customizable: choose your color palette & vibe',
+      'Made by order · Production time: 3 working days',
+      'Ships anywhere in Indonesia',
+      'Handmade in Bandung'
+    ],
+    customOptions: ['Earthy Tones','Muted Greens','Soft Purple','Ocean Vibes','Warm Neutrals','Custom Vibe']
+  },
+  tray: {
+    id: 'tray',
+    name: 'Clay Tray',
+    subtitle: 'Handmade Clay · Minimal Design',
+    category: 'Handmade Home Decor',
+    price: 25000,
+    priceLabel: 'Rp 25.000',
+    promo: null,
+    stock: 'Ready stock · 1 piece only',
+    imgs: ['images/clay0.jpg','images/clay1.jpg','images/clay2.jpg','images/clay3.jpg','images/clay4.jpg'],
+    desc: `Some objects don't ask for attention — they just quietly make everything around them feel better. The Winxloop Clay Tray is one of those things.
+
+Shaped by hand from soft clay, then pressed with a clean spiral design that draws the eye inward, it's both a vessel and a small statement. Minimal. Warm. Honest.
+
+Place it on your bedside table for your rings. Set a tiny candle in it. Or simply let it sit on your desk and remind you that something made slowly, with care, is always worth having.`,
+    features: [
+      'Handmade from natural clay',
+      'Minimal spiral design — clean and aesthetic',
+      'Suitable for jewelry, small candles, or decor',
+      'Ready stock — only 1 piece available',
+      'Simple, clean, and unique',
+      'Handmade in Bandung'
+    ],
+    customOptions: null
+  },
   earphones: {
     id: 'earphones',
     name: 'Wrapped Earphones',
@@ -1110,16 +1137,11 @@ const products = {
     priceLabel: 'Rp 135.000',
     promo: 'Pre-Order 6–10 days',
     stock: 'Pre-Order · Production 6–10 days',
-    imgs: [
-      'images/wrapped1.jpg',
-      'images/wrapped2.jpg',
-      'images/wrapped3.jpg',
-      'images/wrapped4.jpg',
-      'images/wrapped5.jpg',
-      'images/wrapped6.jpg'
-    ],
+    imgs: ['images/wrapped1.jpg','images/wrapped2.jpg','images/wrapped3.jpg','images/wrapped4.jpg','images/wrapped5.jpg','images/wrapped6.jpg'],
     desc: `Upgrade your daily essentials with a TOUCH OF ART. Each pair is hand-wrapped using embroidery threads and tiny bead details — giving something you use every day a more personal, intentional feel.
+
 Every wrap is done by hand, one by one. Tell us your colors, your aesthetic, your vibe — and we'll make it yours. Bead details are chosen to match the mood you choose.
+
 Comes in an aesthetic box with a reusable pouch, ready to carry wherever you go.`,
     features: [
       'Using KiiP Wired Earphones (included)',
@@ -1129,23 +1151,8 @@ Comes in an aesthetic box with a reusable pouch, ready to carry wherever you go.
     ],
     customOptions: ['Dreamy','Earthy','Ocean','Soft Girl','Indie','Custom Vibe']
   },
-  charm: {
-    id:'charm', name:'Hanging Charm', subtitle:'Fluorite · Beads · Shell · Wood',
-    category:'Handmade Hanging Decoration', price:105000, priceLabel:'Rp 105.000',
-    promo:'Limited', stock:'Made by order · Production: 3 days',
-    desc:`There's something quiet about the way light moves through fluorite. Each stone catches it differently — no two ever the same. That's the heart of the Winxloop Hanging Charm.
-
-Strung by hand on natural cord, each charm is assembled one by one, stone by stone. The composition is guided by the colors and mood you choose — earthy and warm, soft and dreamy, or bold and grounding. We'll tune it to you.
-
-Hang it by your window. Let it catch the afternoon light. Let it remind you of something you can't quite name — but know is yours.`,
-    features:['Made with natural fluorite stones and beads','Each piece is unique — no two are identical','Customizable: choose your color palette & vibe','Made by order · Production time: 3 working days','Ships anywhere in Indonesia','Handmade in Bandung'],
-    customOptions:['Earthy Tones','Muted Greens','Soft Purple','Ocean Vibes','Warm Neutrals','Custom Vibe'],
-    svgType:'charm',
-    imgs: CHARM_IMGS
-  },
-
   can: {
-    id: 'soda can tab man',
+    id: 'can',
     name: 'Soda Can Tab Man Keychain',
     subtitle: 'Soda can tabs · Beads · Wires',
     category: 'Handmade Accessories',
@@ -1153,35 +1160,19 @@ Hang it by your window. Let it catch the afternoon light. Let it remind you of s
     priceLabel: 'Rp 25.000',
     promo: 'Pre-Order 6–10 days',
     stock: 'Pre-Order · Production 6–10 days',
-    imgs: [
-      'images/can1.jpg',
-      'images/can2.jpg',
-      'images/can3.jpg',
-      'images/can4.jpg',
-      'images/can5.jpg',
-    ],
-    desc: `Turning little everyday objects into tiny wearable art. Handmade keychains made from recycled soda can tabs, beads, wires, and tiny details to create unique little characters & playful accessories`,
+    imgs: ['images/can1.jpg','images/can2.jpg','images/can3.jpg','images/can4.jpg','images/can5.jpg'],
+    desc: `Turning little everyday objects into tiny wearable art. Handmade keychains made from recycled soda can tabs, beads, wires, and tiny details to create unique little characters & playful accessories.
+
+Each one is assembled by hand — the tabs bent, the beads threaded, the tiny personality built piece by piece. No mass production. No two the same.
+
+Clip it to your bag, your keys, your jacket zipper. Let it start a conversation.`,
     features: [
       'Handmade one by one',
       'Each piece is unique & not mass produced',
       'Lightweight & easy to carry',
-      'Request your own colors, details, and vibes.'
+      'Request your own colors, details, and vibes'
     ],
-  },
-
-  tray: {
-    id:'tray', name:'Clay Tray', subtitle:'Handmade Clay · Minimal Design',
-    category:'Handmade Home Decor', price:25000, priceLabel:'Rp 25.000',
-    promo:null, stock:'Ready stock · 1 piece only',
-    desc:`Some objects don't ask for attention — they just quietly make everything around them feel better. The Winxloop Clay Tray is one of those things.
-
-Shaped by hand from soft clay, then pressed with a clean spiral design that draws the eye inward, it's both a vessel and a small statement. Minimal. Warm. Honest.
-
-Place it on your bedside table for your rings. Set a tiny candle in it. Or simply let it sit on your desk and remind you that something made slowly, with care, is always worth having.`,
-    features:['Handmade from natural clay','Minimal spiral design — clean and aesthetic','Suitable for jewelry, small candles, or decor','Ready stock — only 1 piece available','Simple, clean, and unique','Handmade in Bandung'],
-    customOptions:null,
-    svgType:'tray',
-    imgs: TRAY_IMGS
+    customOptions: ['Colorful','Monochrome','Pastel','Bold','Earthy','Custom Vibe']
   }
 };
 
@@ -1211,8 +1202,6 @@ function renderDetail(id) {
   detailCurrentSlide = 0;
   const p = products[id];
   if (!p) return;
-
-  // Always use p.imgs — every product now has an imgs array
   const imgs = p.imgs;
 
   const galleryHtml = `
@@ -1234,9 +1223,6 @@ function renderDetail(id) {
   const customHtml = p.customOptions ? `<div class="custom-section"><p class="custom-title">Customize Your Vibe</p><p style="font-size:0.78rem;color:var(--text-soft);font-weight:300;">Choose a color palette direction:</p><div class="custom-options">${p.customOptions.map(o=>`<button class="custom-opt" onclick="selectOpt(this)">${o}</button>`).join('')}</div></div>` : '';
   const promoHtml = p.promo ? `<span class="detail-promo">${p.promo}</span>` : '';
   const descHtml = p.desc.split('\n\n').map(para=>`<p class="detail-desc">${para.trim()}</p>`).join('');
-  const cartImgHtml = p.svgType==='charm'
-    ? `<img src="${CHARM_IMGS[0]}" style="width:100%;height:100%;object-fit:cover;">`
-    : `<svg viewBox="0 0 80 80" width="50" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="32" fill="#EBE5D5" stroke="#A75B47" stroke-width="1.5"/><path d="M40,40 Q40,26 50,28 Q60,30 59,38 Q58,47 49,48 Q40,49 38,40 Q36,31 42,29 Q48,27 50,33 Q52,39 47,43 Q42,47 37,43 Q32,39 35,35" fill="none" stroke="#3B281B" stroke-width="2" stroke-linecap="round"/></svg>`;
 
   document.getElementById('detailContainer').innerHTML = `
     <div class="detail-gallery">${galleryHtml}</div>
@@ -1356,29 +1342,29 @@ function filterProducts(btn,cat) {
   });
 }
 function submitOrder() {
-  const name = document.querySelector('.contact-right .form-input[placeholder="e.g. Mvdi"]').value.trim();
-  const contact = document.querySelector('.contact-right .form-input[placeholder="@yourusername or 08xx"]').value.trim();
-  const product = document.querySelector('.contact-right .form-select').value;
-  const vibe = document.querySelector('.contact-right .form-input[placeholder*="earthy tones"]').value.trim();
-  const address = document.querySelector('.contact-right .form-textarea').value.trim();
-  const notes = document.querySelectorAll('.contact-right .form-textarea')[1]?.value.trim();
+  const name = document.getElementById('inp-name').value.trim();
+  const contact = document.getElementById('inp-contact').value.trim();
+  const product = document.getElementById('inp-product').value;
+  const vibe = document.getElementById('inp-vibe').value.trim();
+  const address = document.getElementById('inp-address').value.trim();
+  const notes = document.getElementById('inp-notes').value.trim();
 
   if (!name || !contact || !product) {
     showToast('Please fill in name, contact & product ✦');
     return;
   }
 
-  const msg = 
+  const msg =
 `Hi, Winxloop!
 
 *Name:* ${name}
 *Contact:* ${contact}
-*Products:* ${product}
+*Product:* ${product}
 *Vibe:* ${vibe || '-'}
 *Address:* ${address || '-'}
 *Notes:* ${notes || '-'}`;
 
-  const waNumber = '6285179753768'; // ← GANTI dengan nomor WA seller (format: 62xxx)
+  const waNumber = '6285179753768';
   const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
 }
